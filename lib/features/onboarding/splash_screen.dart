@@ -71,50 +71,49 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
+      backgroundColor: const Color(0xFF181818),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(24),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.green.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.task_alt_rounded,
-                  size: 80,
-                  color: Colors.green,
-                ),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                'To Do App',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.5,
-                    ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Stay organized and productive',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey,
-                    ),
-              ),
-              const SizedBox(height: 48),
-              const SizedBox(
-                width: 26,
-                height: 26,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  color: Colors.green,
+                  gradient: RadialGradient(
+                    colors: [
+                      const Color(0xFF15B86C).withOpacity(.5),
+                      Colors.transparent,
+                    ],
+                    center: Alignment.bottomRight,
+                    radius: 1,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    colors: [
+                      const Color(0xFF15B86C).withOpacity(.5),
+                      Colors.transparent,
+                    ],
+                    center: Alignment.topLeft,
+                    radius: 1,
+                  ),
+                ),
+              ),
+            ),
+
+            Center(
+              child: Image.asset(
+                'assets/logo.png',
+                width: 100,
+                height: 100,
+              ),
+            ),
+          ],
         ),
       ),
     );
